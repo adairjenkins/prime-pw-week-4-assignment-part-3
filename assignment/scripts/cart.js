@@ -2,12 +2,8 @@ console.log('***** Cart Functions *****');
 // Make sure to test all functions here in the JS file!
 // We want to see how you are testing your code!!!
 
-let basket = ['a', 'b', 'c', 'd'];
+let basket = [];
 const maxItems = 5;
-console.log(basket);
-console.log(basket.indexOf('o'));
-console.log(basket.splice(1));
-console.log(basket);
 
 function isFull(basket) {
   if (basket.length >= 5)
@@ -30,16 +26,10 @@ function removeItem(item) {
   if (basket.indexOf(item) == -1)
     return null;
   else {
-    basket.splice(basket.indexOf(item));
+    basket.splice(basket.indexOf(item), 1);
     return item;
   }
 }
-
-console.log('TEST removeItem; should return "peas"');
-console.log(removeItem('peas'));
-
-console.log('Test addItem  - should return "true"', addItem('blueberries'))
-console.log('Test addItem - basket should contain "blueberries"', basket);
 
 function listItems(basket) {
   for (let i=0; i<basket.length; i++) {
@@ -48,12 +38,20 @@ function listItems(basket) {
   return;
 }
 
-console.log('Test listItems - should log apples, oranges, pears and return undefined');
-console.log(listItems(['apples', 'oranges', 'pears']));
-
 function empty(basket) {
   return basket = [];
 }
 
-console.log('Test empty - should return empty array');
-console.log(empty(['apples', 'watermelon', 'raspberries']));
+console.log('Test addItem: adding apples, oranges, bananas, pears, and kiwi');
+console.log(addItem('apples'), addItem('oranges'), addItem('bananas'), addItem('pears'), addItem('kiwi'));
+
+console.log('Test listItems')
+console.log(`Basket contains`, listItems(basket));
+
+console.log('Test isFull: are there 5 or more items in basket?', isFull(basket));
+console.log('Test addItem: can a sixth item be added?', addItem('mango'));
+
+console.log('Test removeItem: remove "pears"', removeItem('pears'));
+console.log(listItems(basket));
+
+console.log('Test empty', empty(basket));
